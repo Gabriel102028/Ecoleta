@@ -1,5 +1,4 @@
 @media (max-width: 900px) {
-
     #page-home {
         background-position-x: 70vw;
     }
@@ -16,18 +15,35 @@
     #page-home main {
         align-items: center;
     }
+
+    #page-create-point .field-group{
+        flex-direction: column;
+    }
+
+    #page-create-point .field-group .field + .field{
+        margin-left: 0px;
+    }
+
+    #page-search-results .cards {
+        grid-template-columns: 1fr;
+    }
 }
 
-@media (max-width: 1700px){
 
-    #page-home{
+@media (max-width: 1700px) {
+    #page-home {
         background-position-x: 40vw;
     }
 }
 
-@media (max-height: 760px){
-
-    #page-home{
+@media (max-height: 760px) {
+    #page-home {
         background-position-y: 200px;
+    }
+}
+
+@media (max-width: 600px){
+    #page-create-point .items-grid{
+        grid-template-columns: 1fr;
     }
 }
