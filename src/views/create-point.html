@@ -55,7 +55,7 @@
                     <input type="hidden" name="state">
                 </div>
                 <div class="field">
-                    <label for="city">Cidade</label>
+                    <label for="state">Cidade</label>
                     <select name="city" disabled="disabled" required="required">
                         <option value="">Selecione a cidade</option>
                     </select>
@@ -108,6 +108,8 @@
  {% block modal %}
    {% if saved %}
         {%include "partials/point-created.html"%}
+    {%elif tired%}
+        {%include "partials/created-point-error.html"%}
     {% endif %}
   {% endblock modal %}
 

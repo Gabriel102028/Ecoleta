@@ -18,7 +18,6 @@ nunjucks.configure("src/views", {
     noCache: true
 })
 
-
 //configurar rotas
 server.get("/", (req, res) => {
     return res.render("index.html", { title : "Um titulo"})
@@ -59,16 +58,19 @@ server.post("/save-point", (req, res) => {
     ]
 
     function afterInsertData(err) {
+
+        console.log(err)
         if (err) {
             console.log(err)
-            return res.send("Erro no cadastro")
-            
+            //return res.send("Erro no cadastro")
+             return res.render("create-point.html", { saved: false, tired: true})   
+        }else{
+
+            console.log("Cadastrado com sucesso.")
+            console.log(this)
+
+            return res.render("create-point.html", { saved: true })
         }
-
-        console.log("Cadastrado com sucesso.")
-        console.log(this)
-
-        return res.render("create-point.html", { saved: true})
     }
 
     db.run(query, values, afterInsertData)
@@ -84,6 +86,7 @@ server.get("/search", (req, res) => {
         //pesquisa vazia
         return res.render("search-results.html", {total: 0})
     }
+
     //pegar os dados do banco de dados
     //3 Consusltar os dados da tabela
     db.all(`SELECT * FROM places WHERE city LIKE '%${search}%'`, function (err, rows) {
